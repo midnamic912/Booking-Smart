@@ -5,7 +5,7 @@ function Rate(props) {
     <div>
     <div className="rateStar">
       <div className="emptyStar">★★★★★</div>
-      <div className="fullStar" style={{width: "80%"}}>★★★★★</div>
+      <div className="fullStar" style={{width: (props.rate/5*100)+"%"}}>★★★★★</div>
     </div>
     <h2 className="rate">
       Rate: {props.rate} / {props.rateCount} Rates

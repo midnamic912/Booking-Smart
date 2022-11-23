@@ -3,16 +3,18 @@
 var axios = require("axios");
 var express = require('express');
 var app = express();
+var cors = require('cors');
+
+app.use(cors());
 
 app.get('/', async (req, res) => {
-
-  //Todo: add middleware to add res.header "Accept-xxxxx-xxx-allow-origin" (import cors library)
+  const queryMerchantName = req.query.merchantName;
 
   const fetchPlaceId = async () => {
     const config = {
       params: {
         key: "AIzaSyCDZUORk80tfCDBROrIWdHRhTgVDlLU_tY",
-        input: "太魯閣晶英酒店",
+        input: queryMerchantName,
         inputtype: "textquery",
         fields:"name,place_id"
       }
@@ -22,7 +24,7 @@ app.get('/', async (req, res) => {
       const {data: response} = await axios.get("https://maps.googleapis.com/maps/api/place/findplacefromtext/json", config);
       return response.candidates[0].place_id;
     } catch (error) {
-      console.error(error.message);
+      throw error;
     }
 }
 
@@ -40,10 +42,11 @@ const fetchPlaceDetail = async (placeId) => {
   
   try {
     const {data: response} = await axios.get("https://maps.googleapis.com/maps/api/place/details/json", config);
+    console.log('Log from server:');
     console.log(response);
     return response;
   } catch (error) {
-    console.error(error.message); //Todo: throw error, using middleware or throw here
+    throw error; //Todo: throw error, using middleware or throw here
   }
 }
 
@@ -57,4 +60,4 @@ const fetchPlaceDetail = async (placeId) => {
 
 })
 
-app.listen(3000, ()=>{console.log('Server on port 3000.')});
+app.listen(8080, ()=>{console.log('Server on port 8080.')});
