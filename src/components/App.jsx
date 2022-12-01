@@ -12,8 +12,8 @@ function App() {
   
 
   const fetchData = async (retryWithAddress) => {
-    const merchantName = "太魯閣晶英酒店"; // Extention will fetch the hotel name on Booking.com. <document.querySelector('.pp-header__title')>
-    const merchantAddress = "三星鄉No. 200-1, Section 2, Annong North Road" // document.querySelector(".hp_address_subtitle")
+    const merchantName = "生態綠舟民宿"; // Extention will fetch the hotel name on Booking.com. <document.querySelector('.pp-header__title')>
+    const merchantAddress = "冬山鄉宜東路450巷69號" // document.querySelector(".hp_address_subtitle")
 
     const config = {
       params: {

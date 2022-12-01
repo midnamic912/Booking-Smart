@@ -1,9 +1,12 @@
-var axios = require("axios");
-var express = require('express');
-var app = express();
-var cors = require('cors');
+const axios = require("axios");
+const express = require('express');
+const cors = require('cors');
+const errorHandler = require("./middleware");
+
+const app = express();
 
 app.use(cors());
+app.use(errorHandler);
 
 app.get('/merchant', async (req, res) => {
   const queryKeyword = req.query.keyword;
@@ -41,14 +44,11 @@ const fetchPlaceDetail = async (placeId) => {
     }
   }
   
-  try {
     const {data: response} = await axios.get("https://maps.googleapis.com/maps/api/place/details/json", config);
     console.log('Log from server:');
     console.log(response);
     return response;
-  } catch (error) {
-    throw error; 
-  }
+  
 }
 
 
