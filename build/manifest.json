@@ -1,0 +1,15 @@
+{
+    "manifest_version": 3,
+    "name": "Booking-Smart Extension",
+    "version": "1.0",
+    "action": {
+        "default_icon": "images/icon-32.png",
+        "default_popup": "index.html"
+    },
+    "description": "View Google Map Reviews when browsing hotels on Booking.com",
+    "icons": {
+        "16": "images/icon-16.png",
+        "48": "images/icon-64.png",
+        "128": "images/icon-128.png"
+      }
+}

@@ -26,7 +26,7 @@
     "start": "concurrently \"npm run start:server\" \"npm run start:react\"",
     "start:react": "react-scripts --openssl-legacy-provider start",
     "start:server": "node ./src/server/server.js",
-    "build": "react-scripts build",
+    "build": "INLINE_RUNTIME_CHUNK=false react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
