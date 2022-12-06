@@ -36,10 +36,13 @@ function App() {
 
   //First time load merchant data
   useEffect(async () => {
-      const response = await chrome.runtime.sendMessage({message: "Fetch Hotel Data from DOM"});
-      console.log(response)
+      const tab = await chrome.tabs.query({active: true, currentWindow: true})
+
+      // have to sendmessage to specified tab with tabId
+      const response = await chrome.tabs.sendMessage(tab[0].id, {message: "Fetch Hotel Data from DOM"});
+      console.log("response from content script: ",response)
       setHotel(response)   
-      fetchData(false, hotel);
+      fetchData(false, response);
   }, []);
 
 

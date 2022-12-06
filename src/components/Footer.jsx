@@ -3,7 +3,7 @@ import React from "react";
 function Footer(props) {
     return (<div>
     <p>Wrong Result? Search again with address!</p>
-    <button onClick={()=>{props.forRetryBtn(true, props.hotel)}}>Search Again</button>
+    <button id="retryBtn" onClick={()=>{props.forRetryBtn(true, props.hotel)}}>Search Again</button>
     <p className="resourceCredit">
           Resource: <span>🚩</span> Google Map
         </p>

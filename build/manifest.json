@@ -11,5 +11,13 @@
         "16": "images/icon-16.png",
         "48": "images/icon-64.png",
         "128": "images/icon-128.png"
-      }
+      },
+      "content_scripts": [
+        {
+          "js": ["scripts/content.js"],
+          "matches": [
+            "https://www.booking.com/hotel/*"
+          ]
+        }
+      ]
 }

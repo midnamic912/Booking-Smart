@@ -10,7 +10,7 @@
 
 .merchantName {
   font-family: "Noto Sans TC", sans-serif;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .rate {
@@ -60,4 +60,19 @@
   top: 0;
   white-space: nowrap;
   overflow: hidden;
+}
+
+/* Footer */
+#retryBtn {
+  font-family: "Varela Round", sans-serif;
+  border:0;
+  background-color:#066163;
+  color:#fff;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+#retryBtn:hover{
+  color:#066163;
+  background-color:#fff;
 }
