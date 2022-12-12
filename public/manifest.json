@@ -19,5 +19,9 @@
             "https://www.booking.com/hotel/*"
           ]
         }
-      ]
+      ],
+    "permissions": [
+      "activeTab"
+    ]
+      
 }

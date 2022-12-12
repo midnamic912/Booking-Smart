@@ -36,10 +36,11 @@ function App() {
 
   //First time load merchant data
   useEffect(async () => {
-      const tab = await chrome.tabs.query({active: true, currentWindow: true})
+      // tabs.query returns an array of tabs. With query like here, it'll be only one tab.
+      const [tab] = await chrome.tabs.query({active: true, currentWindow: true})
 
       // have to sendmessage to specified tab with tabId
-      const response = await chrome.tabs.sendMessage(tab[0].id, {message: "Fetch Hotel Data from DOM"});
+      const response = await chrome.tabs.sendMessage(tab.id, {message: "Fetch Hotel Data from DOM"});
       console.log("response from content script: ",response)
       setHotel(response)   
       fetchData(false, response);
