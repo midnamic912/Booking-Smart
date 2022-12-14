@@ -16,6 +16,7 @@ function App() {
     const merchantName = hotel.hotelName; // Extention will fetch the hotel name on Booking.com. <document.querySelector('.pp-header__title')>
     const merchantAddress = hotel.hotelAddress // document.querySelector(".hp_address_subtitle")
 
+    // If it is retry, search with address 
     const config = {
       params: {
         keyword: retryWithAddress ? merchantAddress : merchantName, 
@@ -24,10 +25,10 @@ function App() {
 
     try {
       const { data: merchantData } = await axios.get(
-        "http://localhost:8080/merchant",
+        "http://localhost:8080/merchant", // TODO: config to AWS URL
         config
       );
-      console.log("Log form app:", merchantData.result);
+      console.log("Result logged from app:", merchantData.result);
       setData(merchantData.result);
     } catch (error) {
       throw error
@@ -39,7 +40,9 @@ function App() {
       // tabs.query returns an array of tabs. With query like here, it'll be only one tab.
       const [tab] = await chrome.tabs.query({active: true, currentWindow: true})
 
+      // sendMessage to content script and get the hotel obj
       // have to sendmessage to specified tab with tabId
+      // fetch Places API data with the hotel
       const response = await chrome.tabs.sendMessage(tab.id, {message: "Fetch Hotel Data from DOM"});
       console.log("response from content script: ",response)
       setHotel(response)   
