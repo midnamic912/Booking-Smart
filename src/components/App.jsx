@@ -25,7 +25,7 @@ function App() {
 
     try {
       const { data: merchantData } = await axios.get(
-        "http://booking-smart-server.ap-northeast-1.elasticbeanstalk.com/merchant", // TODO: config to AWS URL
+        "http://booking-smart-server.ap-northeast-1.elasticbeanstalk.com/merchant", 
         config
       );
       console.log("Result logged from app:", merchantData.result);
