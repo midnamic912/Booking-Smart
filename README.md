@@ -18,6 +18,7 @@ Download this Google Chrome Extension and get infos on Google Map at the same ti
 
 When on a Booking.com merchant page:
 <li>Users can view the hotel information on Google Map at the same time and in the same window, like rates and reviews, booking hotels more wisely.</li>
+<li>Always shows the newest 5 reviews, ensuring the feedback is always the latest and reflects the real situation.</li> 
 <li>Users can link to the hotel page on Google Map (open new tab) without any effort.</li>
 <li>Users can search again with the hotel address in option, in case the original result is wrong.</li>
 
