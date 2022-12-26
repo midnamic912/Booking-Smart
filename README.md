@@ -1,11 +1,14 @@
 # Booking-Smart
-A little Google Chrome Extension tool which helps you decide more wisely when booking hotels 
+A Google Chrome Extension tool which offers hotel infos from Google Map, helping you decide more wisely when booking hotels on Booking.com
 
 
 
 https://user-images.githubusercontent.com/106741685/209320107-eeb84af6-7b78-41c3-be1a-1c3fc2ebea3b.mp4
 
-<img src="https://imgur.com/apYAUrU.png"><img src="https://imgur.com/apYAUrU.png">
+
+Example 1             |  Example 2
+:-------------------------:|:-------------------------:
+![](https://imgur.com/apYAUrU.png)  |  ![](https://i.imgur.com/W24SSS6.jpg)
 
 
 # Features:
@@ -21,5 +24,16 @@ When on a Booking.com merchant page:
 
 # Tools & Techniques:
 
-<li><b>Google Chrome Extension</b></li>
-<li><b>Express</b>: for server</li>
+<p>Frontend:</p>
+<li><b>Google Chrome Extension Development</b></li>
+<li><b>React.js</b>: as frontend framework</li>
+<br>
+
+<p>Backend:</p>
+<li><b>Node.js</b>: as backend server language</li>
+<li><b>Express</b>: as backend server framework</li>
+<li><b>RESTful API</b>: for backend server API routes</li>
+<li><b>Implement Google Places API</b>: Resource of hotel informations</li>
+<li><b>Axios</b>: library for API calling</li>
+<li><b>CORS</b>: library for allowing CORS requests</li>
+<li><b>AWS Elastic Beanstalk</b>: as backend server hosting</li>
