@@ -6,50 +6,50 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function App() {
-
-
   const [data, setData] = useState(null);
   const [hotel, setHotel] = useState(null);
 
-
   const fetchData = async (retryWithAddress, hotel) => {
     const merchantName = hotel.hotelName; // Extention will fetch the hotel name on Booking.com. <document.querySelector('.pp-header__title')>
-    const merchantAddress = hotel.hotelAddress // document.querySelector(".hp_address_subtitle")
+    const merchantAddress = hotel.hotelAddress; // document.querySelector(".hp_address_subtitle")
 
-    // If it is retry, search with address 
+    // If it is retry, search with address
     const config = {
       params: {
-        keyword: retryWithAddress ? merchantAddress : merchantName, 
+        keyword: retryWithAddress ? merchantAddress : merchantName,
       },
     };
 
     try {
       const { data: merchantData } = await axios.get(
-        "http://booking-smart-server.ap-northeast-1.elasticbeanstalk.com/merchant", 
+        "http://booking-smart-server.ap-northeast-1.elasticbeanstalk.com/merchant",
         config
       );
       console.log("Result logged from app:", merchantData.result);
       setData(merchantData.result);
     } catch (error) {
-      throw error
+      throw error;
     }
   };
 
   //First time load merchant data
   useEffect(async () => {
-      // tabs.query returns an array of tabs. With query like here, it'll be only one tab.
-      const [tab] = await chrome.tabs.query({active: true, currentWindow: true})
+    // tabs.query returns an array of tabs. With query like here, it'll be only one tab.
+    const [tab] = await chrome.tabs.query({
+      active: true,
+      currentWindow: true,
+    });
 
-      // sendMessage to content script and get the hotel obj
-      // have to sendmessage to specified tab with tabId
-      // fetch Places API data with the hotel
-      const response = await chrome.tabs.sendMessage(tab.id, {message: "Fetch Hotel Data from DOM"});
-      console.log("response from content script: ",response)
-      setHotel(response)   
-      fetchData(false, response);
+    // sendMessage to content script and get the hotel obj
+    // have to sendmessage to specified tab with tabId
+    // fetch Places API data with the hotel
+    const response = await chrome.tabs.sendMessage(tab.id, {
+      message: "Fetch Hotel Data from DOM",
+    });
+    console.log("response from content script: ", response);
+    setHotel(response);
+    fetchData(false, response);
   }, []);
-
-
 
   if (data) {
     return (
@@ -77,18 +77,21 @@ function App() {
               );
             })
           : "No Reviews"}
-        <Footer hotel={hotel} forRetryBtn={fetchData}/>
+        <Footer hotel={hotel} forRetryBtn={fetchData} />
         {/* create a new tab and prevent tabnapping attacks */}
-        <a href={data.url} target="_blank" rel="noopener noreferrer">See on Google Map</a>
+        <a href={data.url} target="_blank" rel="noopener noreferrer">
+          See on Google Map
+        </a>
       </div>
     );
-  } else{ // UI before the API comes back
+  } else {
+    // UI before the API comes back
     return (
-    <div className="App">
-      <h1>Loading Hotel Info...</h1>
-    </div>)
+      <div className="App">
+        <h1>Loading Hotel Info...</h1>
+      </div>
+    );
   }
 }
-  
 
 export default App;
